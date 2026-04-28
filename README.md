@@ -216,6 +216,25 @@ This project aligns with roles such as:
 * 🔹 DevSecOps Engineer
 
 ---
+## 📸 Proof of Implementation
+
+### 🔐 Global Security Banner
+![Bashrc](screenshots/bashrc-banner.png)
+
+### 📂 /etc/skel Configuration
+![Skel](screenshots/skel-config.png)
+
+### 💾 Backup Automation (Cron)
+![Cron](screenshots/cron-backup.png)
+
+### 👨‍👩‍👧 Group Verification
+![Groups](screenshots/group-verification.png)
+
+### 👥 User Verification (/etc/passwd)
+![Passwd](screenshots/passwd-verification.png)
+
+### 🏠 Home Directory Users
+![Users](screenshots/home-users.png)
 
 ## 📌 Conclusion
 
