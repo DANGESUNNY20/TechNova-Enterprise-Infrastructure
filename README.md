@@ -235,6 +235,14 @@ This project aligns with roles such as:
 
 ### 🏠 Home Directory Users
 ![Users](screenshots/home-users.png)
+## 📄 Project Documentation
+
+📥 Download Full Case Study:  
+[TECHNOVA Case Study PDF](docs/TECHNOVA-Case-Study.pdf)
+
+✔️ Contains full implementation  
+✔️ Includes commands, screenshots, and verification  
+✔️ Structured enterprise scenario  
 
 ## 📌 Conclusion
 
