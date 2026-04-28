@@ -1,6 +1,3 @@
-Here’s a **premium, professional README.md** for your project — ready to paste into GitHub 👇
-
----
 
 ````markdown
 # 🔐 Linux User Management & Security Automation System (TECHNOVA)
