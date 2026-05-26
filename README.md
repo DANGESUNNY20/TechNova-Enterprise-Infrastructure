@@ -1,257 +1,357 @@
+# 🔐 TECHNOVA — Linux User Management & Security Automation System
 
-````markdown
-# 🔐 Linux User Management & Security Automation System (TECHNOVA)
+<div align="center">
 
-🚀 **Enterprise-Level Linux Administration Case Study**  
-Designed and implemented to simulate real-world organizational infrastructure with automation, security policies, and role-based access control.
+### 🏢 Enterprise Linux Administration & Security Case Study  
+Simulating a real-world organizational infrastructure using Linux administration, automation, and security best practices.
+
+![Linux](https://img.shields.io/badge/Linux-RHEL%20%7C%20Kali-red?style=for-the-badge&logo=linux)
+![Bash](https://img.shields.io/badge/Bash-Scripting-green?style=for-the-badge&logo=gnubash)
+![Security](https://img.shields.io/badge/Security-Hardening-blue?style=for-the-badge&logo=securityscorecard)
+![Automation](https://img.shields.io/badge/Automation-Cron%20%26%20Rsync-orange?style=for-the-badge)
+
+</div>
 
 ---
 
-## 📌 Project Overview
+# 📌 Overview
 
-This project demonstrates a complete Linux administration workflow for a multi-department organization (**TECHNOVA**), focusing on:
+TECHNOVA is a **Linux administration and security automation project** designed to replicate how enterprise organizations manage users, permissions, password policies, backups, and security controls across multiple departments.
 
-- 👥 User & Group Management  
+The project demonstrates practical implementation of:
+
+- 👥 User & Group Administration  
 - 🔐 Role-Based Access Control (RBAC)  
-- 🔑 Password Policy Enforcement  
-- 💾 Automated Backup System  
-- ⏳ Account Lifecycle Management  
-- ⚙️ System-Wide Security Configuration  
-- 📁 Default User Environment Setup  
+- 🔑 Password Security Policies  
+- 💾 Backup Automation  
+- ⏳ User Lifecycle Management  
+- ⚙️ System Hardening  
+- 📁 Standardized User Environment Configuration  
 
 ---
 
-## 🏢 Organization Scenario
+# 🏢 Enterprise Scenario
 
-TECHNOVA is a company with multiple departments requiring secure and structured Linux access.
+TECHNOVA consists of multiple departments requiring secure and isolated Linux access.
 
-### 📊 Department Distribution
+## 📊 Department Distribution
 
 | Department | Users |
-|-----------|------|
-| HR        | 10   |
-| Finance   | 15   |
-| Server    | 5    |
-| Admin     | 8    |
-| Sales     | 23   |
-| Interns   | 20   |
-| IT        | 12   |
+|------------|------:|
+| HR         | 10 |
+| Finance    | 15 |
+| Server     | 5 |
+| Admin      | 8 |
+| Sales      | 23 |
+| Interns    | 20 |
+| IT         | 12 |
 
 ---
 
-## 🎯 Objectives
+# 🎯 Project Objectives
 
-- Create department-wise users and groups  
-- Implement secure password policies  
-- Configure role-based directory permissions  
-- Automate system backups using cron jobs  
-- Manage account expiry for temporary users  
-- Standardize user environment using `/etc/skel`  
-- Apply global login security banner  
-
----
-
-## 🛠️ Technologies & Tools
-
-- 🐧 Linux (RHEL / Kali Linux)
-- 💻 Bash Scripting
-- ⏰ Cron Jobs
-- 🔄 Rsync
-- 🔐 Linux Security Tools
+✔️ Create department-wise users and groups  
+✔️ Enforce password expiration policies  
+✔️ Implement secure directory permissions  
+✔️ Automate backups using Cron + Rsync  
+✔️ Configure account expiration for temporary users  
+✔️ Standardize default user environments using `/etc/skel`  
+✔️ Configure organization-wide login security banner  
 
 ---
 
-## ⚙️ Key Features
+# 🛠️ Technologies & Tools
 
-### 👥 1. User & Group Management
-- Department-wise group creation  
-- Bulk user creation using naming conventions  
-- Verification using `/etc/passwd` and `/etc/group`  
+| Technology | Purpose |
+|------------|----------|
+| 🐧 Linux (RHEL / Kali) | Operating Environment |
+| 💻 Bash Scripting | Automation |
+| ⏰ Cron Jobs | Task Scheduling |
+| 🔄 Rsync | Backup Automation |
+| 🔐 Linux Security Utilities | System Hardening |
 
 ---
 
-### 🔐 2. Password Policy Enforcement
+# ⚙️ Core Features
+
+---
+
+## 👥 1. User & Group Management
+
+### Implemented Features
+- Department-wise group creation
+- Bulk user provisioning
+- Naming convention standardization
+- Verification using `/etc/passwd` and `/etc/group`
+
+### Example
+
+```bash
+groupadd finance
+useradd -G finance fin01
+```
+
+---
+
+## 🔐 2. Password Policy Enforcement
+
+Password expiration policy implemented using:
+
 ```bash
 chage -M 1 username
-````
+```
 
-* Forces password expiry
-* Demonstrates strict security enforcement
+### Security Benefits
+- Enforces periodic password changes
+- Reduces risk of credential misuse
+- Demonstrates enterprise security policy implementation
 
-📌 *Note: In real environments, this is typically set to 30–90 days.*
+> 📌 Note: Real-world organizations generally use 30–90 day expiration policies.
 
 ---
 
-### 📁 3. Role-Based Access Control (RBAC)
+## 📁 3. Role-Based Access Control (RBAC)
+
+Directory access restricted based on department roles.
+
+### Permission Configuration
 
 ```bash
 chmod 770 /company/<department>
 chown :<group> /company/<department>
 ```
 
-* Department isolation
-* Secure access based on roles
+### Benefits
+- Department isolation
+- Principle of least privilege
+- Secure group-based access control
 
 ---
 
-### 💾 4. Backup Automation
+## 💾 4. Backup Automation
+
+Automated incremental backups configured using Cron and Rsync.
+
+### Cron Job
 
 ```bash
 */30 * * * * /usr/bin/rsync -av /home/ /backup/home/
 ```
 
-* Automated backup every 30 minutes
-* Uses incremental backup (efficient & fast)
-* Logs stored for monitoring
+### Features
+- Automatic backup every 30 minutes
+- Incremental synchronization
+- Logging and monitoring support
+- Preserves permissions and ownership
 
 ---
 
-### ⏳ 5. Account Expiry Management
+## ⏳ 5. Account Expiry Management
+
+Temporary accounts automatically expire after a defined period.
+
+### Example
 
 ```bash
-usermod -e YYYY-MM-DD username
+usermod -e YYYY-MM-DD interns01
 ```
 
-* Intern accounts auto-expire
-* Prevents unauthorized long-term access
+### Purpose
+- Prevents unauthorized long-term access
+- Simulates enterprise onboarding/offboarding lifecycle
 
 ---
 
-### 🖥️ 6. Global Login Security Banner
+## 🖥️ 6. Global Security Banner
+
+Customized global login warning configured using:
 
 ```bash
 /etc/bashrc
 ```
 
-Displays:
-
-* User info
-* Security warning
-* Monitoring notice
-
----
-
-### 📂 7. /etc/skel Configuration
-
-* Default files for new users
-* Includes `INSTRUCTIONS.txt`
+### Displays
+- Security notice
+- Monitoring warning
+- Authorized-use message
 
 ---
 
-## 📸 Screenshots (Proof)
+## 📂 7. `/etc/skel` Standardization
 
-* ✔️ User creation (`/home`)
-* ✔️ Group mapping (`/etc/group`)
-* ✔️ Backup cron configuration
-* ✔️ /etc/skel setup
+Customized default environment for newly created users.
 
-📁 Check `/screenshots` folder
-
----
-
-## 📂 Project Structure
-
-```
-Linux-User-Management-Automation-TECHNOVA/
-│── README.md
-│── docs/
-│     └── TECHNOVA-Case-Study.pdf
-│
-│── scripts/
-│     ├── user_creation.sh
-│     ├── password_policy.sh
-│     ├── backup_cron.sh
-│
-│── configs/
-│     ├── bashrc.txt
-│     ├── skel_INSTRUCTIONS.txt
-│
-│── screenshots/
-│     └── (proof images)
-```
+### Includes
+- `INSTRUCTIONS.txt`
+- Default configuration files
+- Standardized onboarding environment
 
 ---
 
-## 🚀 How to Use
+# 📸 Proof of Implementation
 
-1. Clone repository:
+## 🔐 Global Security Banner
+![Bashrc Banner](screenshots/bashrc-banner.png)
+
+---
+
+## 📂 /etc/skel Configuration
+![Skel Configuration](screenshots/skel-config.png)
+
+---
+
+## 💾 Backup Automation
+![Cron Backup](screenshots/cron-backup.png)
+
+---
+
+## 👨‍👩‍👧 Group Verification
+![Group Verification](screenshots/group-verification.png)
+
+---
+
+## 👥 User Verification
+![Passwd Verification](screenshots/passwd-verification.png)
+
+---
+
+## 🏠 Home Directory Users
+![Home Users](screenshots/home-users.png)
+
+---
+
+# 📂 Project Structure
 
 ```bash
-git clone https://github.com/sunnydange/Linux-User-Management-Automation-TECHNOVA.git
+Linux-User-Management-Automation-TECHNOVA/
+│
+├── README.md
+│
+├── docs/
+│   └── TECHNOVA-Case-Study.pdf
+│
+├── scripts/
+│   ├── user_creation.sh
+│   ├── password_policy.sh
+│   ├── backup_cron.sh
+│
+├── configs/
+│   ├── bashrc.txt
+│   └── skel_INSTRUCTIONS.txt
+│
+├── screenshots/
+│   └── (proof images)
+│
+└── reports/
+    └── logs/
 ```
 
-2. Run scripts:
+---
+
+# 🚀 Installation & Usage
+
+## 1️⃣ Clone Repository
+
+```bash
+git clone https://github.com/DANGESUNNY20/Linux-User-Management-Automation-TECHNOVA.git
+```
+
+---
+
+## 2️⃣ Navigate to Project
+
+```bash
+cd Linux-User-Management-Automation-TECHNOVA
+```
+
+---
+
+## 3️⃣ Execute Scripts
 
 ```bash
 bash scripts/user_creation.sh
 bash scripts/password_policy.sh
+bash scripts/backup_cron.sh
 ```
 
-3. Configure backup:
+---
+
+## 4️⃣ Configure Cron Job
 
 ```bash
 crontab -e
 ```
 
----
+Add:
 
-## 🧠 Skills Demonstrated
-
-* Linux Administration
-* System Hardening
-* Automation & Scripting
-* Access Control Implementation
-* Security Policy Enforcement
-* Backup & Recovery Planning
+```bash
+*/30 * * * * /usr/bin/rsync -av /home/ /backup/home/
+```
 
 ---
 
-## 📈 Career Relevance
+# 🧠 Skills Demonstrated
 
-This project aligns with roles such as:
-
-* 🔹 Linux System Administrator
-* 🔹 Cybersecurity Analyst
-* 🔹 VAPT Engineer
-* 🔹 DevSecOps Engineer
-
----
-## 📸 Proof of Implementation
-
-### 🔐 Global Security Banner
-![Bashrc](screenshots/bashrc-banner.png)
-
-### 📂 /etc/skel Configuration
-![Skel](screenshots/skel-config.png)
-
-### 💾 Backup Automation (Cron)
-![Cron](screenshots/cron-backup.png)
-
-### 👨‍👩‍👧 Group Verification
-![Groups](screenshots/group-verification.png)
-
-### 👥 User Verification (/etc/passwd)
-![Passwd](screenshots/passwd-verification.png)
-
-### 🏠 Home Directory Users
-![Users](screenshots/home-users.png)
-## 📄 Project Documentation
-
-📥 Download Full Case Study:  
-[TECHNOVA Case Study PDF](docs/TECHNOVA-Case-Study.pdf)
-
-✔️ Contains full implementation  
-✔️ Includes commands, screenshots, and verification  
-✔️ Structured enterprise scenario  
-
-## 📌 Conclusion
-
-This project demonstrates a **real-world Linux administration and security automation implementation**, combining system management with cybersecurity best practices.
+- Linux Administration
+- Bash Scripting
+- Access Control Management
+- System Hardening
+- Security Policy Enforcement
+- Backup & Recovery Planning
+- Enterprise User Lifecycle Management
+- Cron Automation
+- Linux File Permission Management
 
 ---
 
-## 👨‍💻 Author
+# 📈 Career Relevance
 
-**Sunny Dange**
-📧 dangesunny2021@gmail.com
-🔗 www.linkedin.com/in/sunnydange
+This project aligns with industry roles such as:
+
+| Role | Relevance |
+|------|------------|
+| 🔹 Linux System Administrator | User & Permission Management |
+| 🔹 Cybersecurity Analyst | Security Hardening |
+| 🔹 VAPT Engineer | Linux Security Concepts |
+| 🔹 DevSecOps Engineer | Automation & Security Integration |
+
+---
+
+# 📄 Documentation
+
+## 📥 Full Case Study
+
+[📘 Download TECHNOVA Case Study](docs/TECHNOVA-Case-Study.pdf)
+
+### Includes
+- Complete implementation steps
+- Commands and verification
+- Enterprise scenario explanation
+- Screenshots and outputs
+- Security configurations
+
+---
+
+# 📌 Conclusion
+
+TECHNOVA demonstrates a practical implementation of **enterprise Linux administration and security automation**, combining automation, access control, account management, and system hardening into a structured real-world case study.
+
+The project showcases hands-on Linux administration skills relevant to modern enterprise and cybersecurity environments.
+
+---
+
+# 👨‍💻 Author
+
+## Sunny Dange
+
+📧 Email: dangesunny2021@gmail.com  
+🔗 LinkedIn: www.linkedin.com/in/sunnydange  
+💻 GitHub: https://github.com/DANGESUNNY20
+
+---
+
+<div align="center">
+
+### ⭐ If you found this project useful, consider giving it a star!
+
+</div>
